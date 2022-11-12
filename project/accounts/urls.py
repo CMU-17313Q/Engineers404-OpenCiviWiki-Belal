@@ -5,6 +5,7 @@ from accounts.views import (
     PasswordResetView,
     ProfileActivationView,
     ProfileFollow,
+    ProfileFollowing,
     ProfileUnfollow,
     RegisterView,
     SettingsView,
@@ -29,6 +30,11 @@ urlpatterns = [
         name="accounts_activate",
     ),
     path("profile/<str:username>/", UserProfileView.as_view(), name="profile"),
+    path(
+        "profile/<str:username>/following",
+        ProfileFollowing.as_view(),
+        name="profile-following",
+    ),
     path(
         "profile/<str:username>/follow", ProfileFollow.as_view(), name="profile-follow"
     ),

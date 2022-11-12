@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="following-total">
+    <div>
+      {% blocktranslate %}
+        {{ profile.following.count }} following
+      {% endblocktranslate %}
+    </div>
+  </div>
+  <div class="following-list">
+    {% for following in profile.following.all %}
+    <p>{{ following.user.username }}</p>
+    {% empty %}
+        <p>{% translate "Not following any users" %}</p>
+    {% endfor %}
+  </div>
+{% endblock content %}
